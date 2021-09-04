@@ -1,0 +1,347 @@
+<!-- Action Bar-->
+<div id="actionbar" class="action-bar show-action-bar m-2">
+    <div class="container-fluid d-flex align-items-center justify-content-between content-action-bar">
+        <!-- Title -->
+        <div class="d-flex align-items-center flex-wrap mr-1">
+            <div class="d-flex align-items-baseline flex-wrap mr-5">
+                <h5 class="my-1 mr-3">Empresa List</h5>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="d-flex align-items-center">
+            <button class="btn btn-icon ghost-warning mr-1" type="button" placement="bottom" ngbTooltip="Filter"
+                aria-label="Filter" (click)="openFilter(true)">
+                <i class="fi-rr-filter"></i>
+            </button>
+            <button class="btn btn-icon ghost-success mr-1" type="button" placement="bottom" ngbTooltip="Add"
+                aria-label="Add"  [routerLink]="['add']">
+                <i class="fi-rr-plus"></i>
+            </button>
+        </div>
+        <!-- Actions -->
+    </div>
+</div>
+<!-- Action Bar-->
+
+<!-- Option sidebar -->
+<p-sidebar [(visible)]="showFiller" [showCloseIcon]="false" position="right" styleClass="filter-sidebar">
+    <!-- Start >> Option sidebar -->
+    <nav>
+        <!-- Start >> Title -->
+        <div class="row pb-0 mr-0 ml-0">
+            <div class="col-12 filter-sidebar-title text-left">
+                <h5 class="mb-4 pt-4">Filters</h5>
+            </div>
+        </div>
+        <!-- End >> Title -->
+
+        <!-- Start >> Options content -->
+        <div class="p-4 text-left overflow-auto">
+            <form [formGroup]="frmFilter">
+
+
+                <div class="row pb-4">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="id">Id</label>
+                            <input type="text" class="form-control form-control-color" formControlName="id" aria-describedby="id">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="descripcion">Descripcion</label>
+                            <input type="text" class="form-control form-control-color" formControlName="descripcion" aria-describedby="descripcion">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="rFC">RFC</label>
+                            <input type="text" class="form-control form-control-color" formControlName="rFC" aria-describedby="rFC">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="razonSocial">RazonSocial</label>
+                            <input type="text" class="form-control form-control-color" formControlName="razonSocial" aria-describedby="razonSocial">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="constrasenaVUCEM">ConstrasenaVUCEM</label>
+                            <input type="text" class="form-control form-control-color" formControlName="constrasenaVUCEM" aria-describedby="constrasenaVUCEM">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="tokenWEBVUCEM">TokenWEBVUCEM</label>
+                            <input type="text" class="form-control form-control-color" formControlName="tokenWEBVUCEM" aria-describedby="tokenWEBVUCEM">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="correo">Correo</label>
+                            <input type="text" class="form-control form-control-color" formControlName="correo" aria-describedby="correo">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="expeditionPlaceSandbox">ExpeditionPlaceSandbox</label>
+                            <input type="text" class="form-control form-control-color" formControlName="expeditionPlaceSandbox" aria-describedby="expeditionPlaceSandbox">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6 col-sm-6 col-6 text-left">
+                        <button class="btn btn-block btn-default" (click)="resetForm()">
+                            Reset
+                        </button>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-6 text-right">
+                        <button class="btn btn-block btn-primary" (click)="searchList()">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Start >> Options content -->
+    </nav>
+    <!-- End >> Option sidebar -->
+</p-sidebar>
+
+<!-- Container -->
+<div class="m-sm-4 m-3">
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <div class="card">
+                <!-- Loader -->
+                <div class="loader-orion" *ngIf="showLoading===true">
+                    <div class="spinner-grow text-primary m-auto" role="status">
+                    </div>
+                </div>
+                <!-- Empresa Table -->
+                <p-table #dt class="table" [value]="empresas" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                    currentPageReportTemplate="{first} to {last} of {totalRecords}" sortMode="multiple"
+                    [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['id','descripcion','rFC','razonSocial','constrasenaVUCEM','tokenWEBVUCEM','vigencia','correo','usuarioCreacionId','fechaCreacion','usuarioModificacionId','fechaModificacion','usuarioBajaId','fechaBaja','baja','expeditionPlace','expeditionPlaceSandbox']"
+                    styleClass="p-datatable-responsive-demo">
+
+                    <!-- Title table -->
+                    <ng-template pTemplate="caption">
+                        <div class="row">
+                            <div class="col-lg-9 col-md-8 col-sm-6 col-12 d-flex align-items-center">
+                                <!-- Title -->
+                                <h5 class="m-3">Table Empresa</h5>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-center">
+                                <!-- Search -->
+                                <!-- <div class="d-flex align-items-center">
+                                  
+                                </div> -->
+                                <div class="input-group m-3">
+                                    <div class="input-icon input-icon-right">
+                                        <input pInputText type="text" class="form-control form-control-color"
+                                            (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                            placeholder="Search">
+                                        <span>
+                                            <i class="fi-rr-search text-muted"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </ng-template>
+
+                    <!-- Header table -->
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th class="th1" pSortableColumn="id">Id
+                                <p-sortIcon field="id"></p-sortIcon>
+                            </th>
+                            <th class="th2" pSortableColumn="descripcion">Descripcion
+                                <p-sortIcon field="descripcion"></p-sortIcon>
+                            </th>
+                            <th class="th3" pSortableColumn="rFC">RFC
+                                <p-sortIcon field="rFC"></p-sortIcon>
+                            </th>
+                            <th class="th4" pSortableColumn="razonSocial">RazonSocial
+                                <p-sortIcon field="razonSocial"></p-sortIcon>
+                            </th>
+                            <th class="th5" pSortableColumn="constrasenaVUCEM">ConstrasenaVUCEM
+                                <p-sortIcon field="constrasenaVUCEM"></p-sortIcon>
+                            </th>
+                            <th class="th6" pSortableColumn="tokenWEBVUCEM">TokenWEBVUCEM
+                                <p-sortIcon field="tokenWEBVUCEM"></p-sortIcon>
+                            </th>
+                            <th class="th7" pSortableColumn="vigencia">Vigencia
+                                <p-sortIcon field="vigencia"></p-sortIcon>
+                            </th>
+                            <th class="th8" pSortableColumn="correo">Correo
+                                <p-sortIcon field="correo"></p-sortIcon>
+                            </th>
+                            <th class="th9" pSortableColumn="usuarioCreacionId">UsuarioCreacionId
+                                <p-sortIcon field="usuarioCreacionId"></p-sortIcon>
+                            </th>
+                            <th class="th10" pSortableColumn="fechaCreacion">FechaCreacion
+                                <p-sortIcon field="fechaCreacion"></p-sortIcon>
+                            </th>
+                            <th class="th11" pSortableColumn="usuarioModificacionId">UsuarioModificacionId
+                                <p-sortIcon field="usuarioModificacionId"></p-sortIcon>
+                            </th>
+                            <th class="th12" pSortableColumn="fechaModificacion">FechaModificacion
+                                <p-sortIcon field="fechaModificacion"></p-sortIcon>
+                            </th>
+                            <th class="th13" pSortableColumn="usuarioBajaId">UsuarioBajaId
+                                <p-sortIcon field="usuarioBajaId"></p-sortIcon>
+                            </th>
+                            <th class="th14" pSortableColumn="fechaBaja">FechaBaja
+                                <p-sortIcon field="fechaBaja"></p-sortIcon>
+                            </th>
+                            <th class="th15" pSortableColumn="baja">Baja
+                                <p-sortIcon field="baja"></p-sortIcon>
+                            </th>
+                            <th class="th16" pSortableColumn="expeditionPlace">ExpeditionPlace
+                                <p-sortIcon field="expeditionPlace"></p-sortIcon>
+                            </th>
+                            <th class="th17" pSortableColumn="expeditionPlaceSandbox">ExpeditionPlaceSandbox
+                                <p-sortIcon field="expeditionPlaceSandbox"></p-sortIcon>
+                            </th>
+                            <th class="th18">Actions</th>
+
+                        </tr>
+                    </ng-template>
+
+                    <!-- Body table -->
+                    <ng-template pTemplate="body" let-empresa>
+                        <tr>
+                            <td>
+                                <label class="p-column-title">Id</label>
+                                <label class="p-right">{{empresa.id}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Descripcion</label>
+                                <label class="p-right">{{empresa.descripcion}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">RFC</label>
+                                <label class="p-right">{{empresa.rFC}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">RazonSocial</label>
+                                <label class="p-right">{{empresa.razonSocial}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">ConstrasenaVUCEM</label>
+                                <label class="p-right">{{empresa.constrasenaVUCEM}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">TokenWEBVUCEM</label>
+                                <label class="p-right">{{empresa.tokenWEBVUCEM}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Vigencia</label>
+                                <label class="p-right">{{empresa.vigencia | customDate}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Correo</label>
+                                <label class="p-right">{{empresa.correo}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">UsuarioCreacionId</label>
+                                <label class="p-right">{{empresa.usuarioCreacionId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">FechaCreacion</label>
+                                <label class="p-right">{{empresa.fechaCreacion}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">UsuarioModificacionId</label>
+                                <label class="p-right">{{empresa.usuarioModificacionId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">FechaModificacion</label>
+                                <label class="p-right">{{empresa.fechaModificacion}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">UsuarioBajaId</label>
+                                <label class="p-right">{{empresa.usuarioBajaId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">FechaBaja</label>
+                                <label class="p-right">{{empresa.fechaBaja}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Baja</label>
+                                <label class="p-right">{{empresa.baja}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">ExpeditionPlace</label>
+                                <label class="p-right">{{empresa.expeditionPlace}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">ExpeditionPlaceSandbox</label>
+                                <label class="p-right">{{empresa.expeditionPlaceSandbox}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Actions</label>
+                                <button class="btn btn-icon ghost-warning p-right" type="button" placement="bottom" arial-label="Edit"
+                                    ngbTooltip="Edit" [routerLink]="['/amcoderc_dev_Jaks/empresa/edit/', empresa.id]">
+                                    <i class="fi-rr-pencil"></i>
+                                </button>
+                                <button class="btn btn-icon ghost-danger p-right" type="button" (click)="delete(empresa)" placement="bottom" aria-label="Remove"
+                                    ngbTooltip="Remove">
+                                    <i class="fi-rr-trash"></i>
+                                </button>
+                            </td>
+
+
+                        </tr>
+                    </ng-template>
+
+                    <!-- Empty table -->
+                    <ng-template pTemplate="emptymessage">
+                        <tr *ngIf="showLoading===false">
+                            <td colspan="18" class="text-center">
+                                No data found.
+                            </td>
+                        </tr>
+                        <tr *ngIf="showLoading===true">
+                            <td colspan="18" class="text-center">
+                                <span>&nbsp;</span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>

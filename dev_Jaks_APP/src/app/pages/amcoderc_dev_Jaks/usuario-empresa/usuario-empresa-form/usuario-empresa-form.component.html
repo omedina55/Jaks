@@ -1,0 +1,161 @@
+<!-- Action Bar-->
+<div id="actionbar" class="action-bar show-action-bar m-2">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+        <!-- Title -->
+        <div class="d-flex align-items-center flex-wrap mr-1">
+            <div class="d-flex align-items-baseline flex-wrap mr-5">
+                <h5 class="my-1 mr-3">UsuarioEmpresa Form</h5>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <!--<div class="d-flex align-items-center">
+            <span class="text-sm" for="description" *ngIf="editAction===true">Edit UsuarioEmpresa</span>
+            <span class="text-sm" for="description" *ngIf="editAction!==true">Create UsuarioEmpresa</span>
+        </div>-->
+    </div>
+</div>
+<!-- Container -->
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <!-- Listing -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 pb-2">
+                    <div class="card">
+                        <!-- Loader -->
+                        <div class="loader-orion" *ngIf="showLoading===true">
+                            <div class="spinner-grow text-primary m-auto" role="status">
+                            </div>
+                        </div>
+                        <div class="card-header align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="card-title m-1">UsuarioEmpresa</h5>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form [formGroup]="frmUsuarioEmpresa" (ngSubmit)="saveForm()">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="usuarioId">UsuarioId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="usuarioId"
+                                                [ngClass]="{ 'is-invalid': validation && f.usuarioId.errors }">
+                                            <div *ngIf="validation && f.usuarioId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.usuarioId.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.usuarioId.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.usuarioId.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="empresaId">EmpresaId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="empresaId"
+                                                [ngClass]="{ 'is-invalid': validation && f.empresaId.errors }">
+                                            <div *ngIf="validation && f.empresaId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.empresaId.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.empresaId.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.empresaId.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="usuarioCreacionId">UsuarioCreacionId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="usuarioCreacionId"
+                                                [ngClass]="{ 'is-invalid': validation && f.usuarioCreacionId.errors }">
+                                            <div *ngIf="validation && f.usuarioCreacionId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.usuarioCreacionId.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.usuarioCreacionId.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.usuarioCreacionId.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="fechaCreacion">FechaCreacion</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="fechaCreacion">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="usuarioModificacionId">UsuarioModificacionId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="usuarioModificacionId"
+                                                [ngClass]="{ 'is-invalid': validation && f.usuarioModificacionId.errors }">
+                                            <div *ngIf="validation && f.usuarioModificacionId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.usuarioModificacionId.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.usuarioModificacionId.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.usuarioModificacionId.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="fechaModificacion">FechaModificacion</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="fechaModificacion">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="usuarioBajaId">UsuarioBajaId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="usuarioBajaId"
+                                                [ngClass]="{ 'is-invalid': validation && f.usuarioBajaId.errors }">
+                                            <div *ngIf="validation && f.usuarioBajaId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.usuarioBajaId.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.usuarioBajaId.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.usuarioBajaId.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="fechaBaja">FechaBaja</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="fechaBaja">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="baja">Baja</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="baja"
+                                                [ngClass]="{ 'is-invalid': validation && f.baja.errors }">
+                                            <div *ngIf="validation && f.baja.errors" class="invalid-feedback">
+                                                <div *ngIf="f.baja.errors.required">Baja is required</div>
+                                                <div *ngIf="f.baja.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.baja.errors.min">Minimum value is -128</div>
+                                                <div *ngIf="f.baja.errors.max">Maximum value is 127</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-end mt-3">
+                                        <button type="button" class="btn btn-default mr-3"
+                                            [routerLink]="['/amcoderc_dev_Jaks/usuarioEmpresa']">Cancel</button>
+                                        <button type="button" class="btn btn-primary" type="submit"
+                                            >Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- <a href="javascript:void(0);" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

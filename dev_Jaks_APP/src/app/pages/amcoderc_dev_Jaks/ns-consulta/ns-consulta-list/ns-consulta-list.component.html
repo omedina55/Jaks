@@ -1,0 +1,489 @@
+<!-- Action Bar-->
+<div id="actionbar" class="action-bar show-action-bar m-2">
+    <div class="container-fluid d-flex align-items-center justify-content-between content-action-bar">
+        <!-- Title -->
+        <div class="d-flex align-items-center flex-wrap mr-1">
+            <div class="d-flex align-items-baseline flex-wrap mr-5">
+                <h5 class="my-1 mr-3">NsConsulta List</h5>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="d-flex align-items-center">
+            <button class="btn btn-icon ghost-warning mr-1" type="button" placement="bottom" ngbTooltip="Filter"
+                aria-label="Filter" (click)="openFilter(true)">
+                <i class="fi-rr-filter"></i>
+            </button>
+            <button class="btn btn-icon ghost-success mr-1" type="button" placement="bottom" ngbTooltip="Add"
+                aria-label="Add"  [routerLink]="['add']">
+                <i class="fi-rr-plus"></i>
+            </button>
+        </div>
+        <!-- Actions -->
+    </div>
+</div>
+<!-- Action Bar-->
+
+<!-- Option sidebar -->
+<p-sidebar [(visible)]="showFiller" [showCloseIcon]="false" position="right" styleClass="filter-sidebar">
+    <!-- Start >> Option sidebar -->
+    <nav>
+        <!-- Start >> Title -->
+        <div class="row pb-0 mr-0 ml-0">
+            <div class="col-12 filter-sidebar-title text-left">
+                <h5 class="mb-4 pt-4">Filters</h5>
+            </div>
+        </div>
+        <!-- End >> Title -->
+
+        <!-- Start >> Options content -->
+        <div class="p-4 text-left overflow-auto">
+            <form [formGroup]="frmFilter">
+
+
+                <div class="row pb-4">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="id">Id</label>
+                            <input type="text" class="form-control form-control-color" formControlName="id" aria-describedby="id">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="tranId">TranId</label>
+                            <input type="text" class="form-control form-control-color" formControlName="tranId" aria-describedby="tranId">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="cfdiTimbrada">CfdiTimbrada</label>
+                            <input type="text" class="form-control form-control-color" formControlName="cfdiTimbrada" aria-describedby="cfdiTimbrada">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="transactionType">TransactionType</label>
+                            <input type="text" class="form-control form-control-color" formControlName="transactionType" aria-describedby="transactionType">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="ticketCaja">TicketCaja</label>
+                            <input type="text" class="form-control form-control-color" formControlName="ticketCaja" aria-describedby="ticketCaja">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="relatedTranId">RelatedTranId</label>
+                            <input type="text" class="form-control form-control-color" formControlName="relatedTranId" aria-describedby="relatedTranId">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control form-control-color" formControlName="name" aria-describedby="name">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <input type="text" class="form-control form-control-color" formControlName="status" aria-describedby="status">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="subtotalFormato">SubtotalFormato</label>
+                            <input type="text" class="form-control form-control-color" formControlName="subtotalFormato" aria-describedby="subtotalFormato">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="accountNumber">AccountNumber</label>
+                            <input type="text" class="form-control form-control-color" formControlName="accountNumber" aria-describedby="accountNumber">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="typeName">TypeName</label>
+                            <input type="text" class="form-control form-control-color" formControlName="typeName" aria-describedby="typeName">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="amountTaxable">AmountTaxable</label>
+                            <input type="text" class="form-control form-control-color" formControlName="amountTaxable" aria-describedby="amountTaxable">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="itemTypeName">ItemTypeName</label>
+                            <input type="text" class="form-control form-control-color" formControlName="itemTypeName" aria-describedby="itemTypeName">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="rate">Rate</label>
+                            <input type="text" class="form-control form-control-color" formControlName="rate" aria-describedby="rate">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="entityName">EntityName</label>
+                            <input type="text" class="form-control form-control-color" formControlName="entityName" aria-describedby="entityName">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="entityFullName">EntityFullName</label>
+                            <input type="text" class="form-control form-control-color" formControlName="entityFullName" aria-describedby="entityFullName">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="descuentoPorAplicar">DescuentoPorAplicar</label>
+                            <input type="text" class="form-control form-control-color" formControlName="descuentoPorAplicar" aria-describedby="descuentoPorAplicar">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="otherRefNum">OtherRefNum</label>
+                            <input type="text" class="form-control form-control-color" formControlName="otherRefNum" aria-describedby="otherRefNum">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6 col-sm-6 col-6 text-left">
+                        <button class="btn btn-block btn-default" (click)="resetForm()">
+                            Reset
+                        </button>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-6 text-right">
+                        <button class="btn btn-block btn-primary" (click)="searchList()">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Start >> Options content -->
+    </nav>
+    <!-- End >> Option sidebar -->
+</p-sidebar>
+
+<!-- Container -->
+<div class="m-sm-4 m-3">
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <div class="card">
+                <!-- Loader -->
+                <div class="loader-orion" *ngIf="showLoading===true">
+                    <div class="spinner-grow text-primary m-auto" role="status">
+                    </div>
+                </div>
+                <!-- NsConsulta Table -->
+                <p-table #dt class="table" [value]="nsConsultas" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                    currentPageReportTemplate="{first} to {last} of {totalRecords}" sortMode="multiple"
+                    [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['id','facturaGlobalId','tranDate','tranId','entityId','cfdiTimbrada','transactionType','ticketCaja','relatedTranId','name','transactionId','status','transactionOrder','amountForeign','subtotalFormato','accounId','accountNumber','typeName','amountTaxable','taxItemId','itemTypeName','rate','entityName','entityFullName','descuentoPorAplicar','otherRefNum']"
+                    styleClass="p-datatable-responsive-demo">
+
+                    <!-- Title table -->
+                    <ng-template pTemplate="caption">
+                        <div class="row">
+                            <div class="col-lg-9 col-md-8 col-sm-6 col-12 d-flex align-items-center">
+                                <!-- Title -->
+                                <h5 class="m-3">Table NsConsulta</h5>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-center">
+                                <!-- Search -->
+                                <!-- <div class="d-flex align-items-center">
+                                  
+                                </div> -->
+                                <div class="input-group m-3">
+                                    <div class="input-icon input-icon-right">
+                                        <input pInputText type="text" class="form-control form-control-color"
+                                            (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                            placeholder="Search">
+                                        <span>
+                                            <i class="fi-rr-search text-muted"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </ng-template>
+
+                    <!-- Header table -->
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th class="th1" pSortableColumn="id">Id
+                                <p-sortIcon field="id"></p-sortIcon>
+                            </th>
+                            <th class="th2" pSortableColumn="facturaGlobalId">FacturaGlobalId
+                                <p-sortIcon field="facturaGlobalId"></p-sortIcon>
+                            </th>
+                            <th class="th3" pSortableColumn="tranDate">TranDate
+                                <p-sortIcon field="tranDate"></p-sortIcon>
+                            </th>
+                            <th class="th4" pSortableColumn="tranId">TranId
+                                <p-sortIcon field="tranId"></p-sortIcon>
+                            </th>
+                            <th class="th5" pSortableColumn="entityId">EntityId
+                                <p-sortIcon field="entityId"></p-sortIcon>
+                            </th>
+                            <th class="th6" pSortableColumn="cfdiTimbrada">CfdiTimbrada
+                                <p-sortIcon field="cfdiTimbrada"></p-sortIcon>
+                            </th>
+                            <th class="th7" pSortableColumn="transactionType">TransactionType
+                                <p-sortIcon field="transactionType"></p-sortIcon>
+                            </th>
+                            <th class="th8" pSortableColumn="ticketCaja">TicketCaja
+                                <p-sortIcon field="ticketCaja"></p-sortIcon>
+                            </th>
+                            <th class="th9" pSortableColumn="relatedTranId">RelatedTranId
+                                <p-sortIcon field="relatedTranId"></p-sortIcon>
+                            </th>
+                            <th class="th10" pSortableColumn="name">Name
+                                <p-sortIcon field="name"></p-sortIcon>
+                            </th>
+                            <th class="th11" pSortableColumn="transactionId">TransactionId
+                                <p-sortIcon field="transactionId"></p-sortIcon>
+                            </th>
+                            <th class="th12" pSortableColumn="status">Status
+                                <p-sortIcon field="status"></p-sortIcon>
+                            </th>
+                            <th class="th13" pSortableColumn="transactionOrder">TransactionOrder
+                                <p-sortIcon field="transactionOrder"></p-sortIcon>
+                            </th>
+                            <th class="th14" pSortableColumn="amountForeign">AmountForeign
+                                <p-sortIcon field="amountForeign"></p-sortIcon>
+                            </th>
+                            <th class="th15" pSortableColumn="subtotalFormato">SubtotalFormato
+                                <p-sortIcon field="subtotalFormato"></p-sortIcon>
+                            </th>
+                            <th class="th16" pSortableColumn="accounId">AccounId
+                                <p-sortIcon field="accounId"></p-sortIcon>
+                            </th>
+                            <th class="th17" pSortableColumn="accountNumber">AccountNumber
+                                <p-sortIcon field="accountNumber"></p-sortIcon>
+                            </th>
+                            <th class="th18" pSortableColumn="typeName">TypeName
+                                <p-sortIcon field="typeName"></p-sortIcon>
+                            </th>
+                            <th class="th19" pSortableColumn="amountTaxable">AmountTaxable
+                                <p-sortIcon field="amountTaxable"></p-sortIcon>
+                            </th>
+                            <th class="th20" pSortableColumn="taxItemId">TaxItemId
+                                <p-sortIcon field="taxItemId"></p-sortIcon>
+                            </th>
+                            <th class="th21" pSortableColumn="itemTypeName">ItemTypeName
+                                <p-sortIcon field="itemTypeName"></p-sortIcon>
+                            </th>
+                            <th class="th22" pSortableColumn="rate">Rate
+                                <p-sortIcon field="rate"></p-sortIcon>
+                            </th>
+                            <th class="th23" pSortableColumn="entityName">EntityName
+                                <p-sortIcon field="entityName"></p-sortIcon>
+                            </th>
+                            <th class="th24" pSortableColumn="entityFullName">EntityFullName
+                                <p-sortIcon field="entityFullName"></p-sortIcon>
+                            </th>
+                            <th class="th25" pSortableColumn="descuentoPorAplicar">DescuentoPorAplicar
+                                <p-sortIcon field="descuentoPorAplicar"></p-sortIcon>
+                            </th>
+                            <th class="th26" pSortableColumn="otherRefNum">OtherRefNum
+                                <p-sortIcon field="otherRefNum"></p-sortIcon>
+                            </th>
+                            <th class="th27">Actions</th>
+
+                        </tr>
+                    </ng-template>
+
+                    <!-- Body table -->
+                    <ng-template pTemplate="body" let-nsConsulta>
+                        <tr>
+                            <td>
+                                <label class="p-column-title">Id</label>
+                                <label class="p-right">{{nsConsulta.id}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">FacturaGlobalId</label>
+                                <label class="p-right">{{nsConsulta.facturaGlobalId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">TranDate</label>
+                                <label class="p-right">{{nsConsulta.tranDate}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">TranId</label>
+                                <label class="p-right">{{nsConsulta.tranId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">EntityId</label>
+                                <label class="p-right">{{nsConsulta.entityId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">CfdiTimbrada</label>
+                                <label class="p-right">{{nsConsulta.cfdiTimbrada}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">TransactionType</label>
+                                <label class="p-right">{{nsConsulta.transactionType}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">TicketCaja</label>
+                                <label class="p-right">{{nsConsulta.ticketCaja}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">RelatedTranId</label>
+                                <label class="p-right">{{nsConsulta.relatedTranId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Name</label>
+                                <label class="p-right">{{nsConsulta.name}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">TransactionId</label>
+                                <label class="p-right">{{nsConsulta.transactionId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Status</label>
+                                <label class="p-right">{{nsConsulta.status}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">TransactionOrder</label>
+                                <label class="p-right">{{nsConsulta.transactionOrder}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">AmountForeign</label>
+                                <label class="p-right">{{nsConsulta.amountForeign}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">SubtotalFormato</label>
+                                <label class="p-right">{{nsConsulta.subtotalFormato}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">AccounId</label>
+                                <label class="p-right">{{nsConsulta.accounId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">AccountNumber</label>
+                                <label class="p-right">{{nsConsulta.accountNumber}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">TypeName</label>
+                                <label class="p-right">{{nsConsulta.typeName}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">AmountTaxable</label>
+                                <label class="p-right">{{nsConsulta.amountTaxable}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">TaxItemId</label>
+                                <label class="p-right">{{nsConsulta.taxItemId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">ItemTypeName</label>
+                                <label class="p-right">{{nsConsulta.itemTypeName}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Rate</label>
+                                <label class="p-right">{{nsConsulta.rate}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">EntityName</label>
+                                <label class="p-right">{{nsConsulta.entityName}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">EntityFullName</label>
+                                <label class="p-right">{{nsConsulta.entityFullName}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">DescuentoPorAplicar</label>
+                                <label class="p-right">{{nsConsulta.descuentoPorAplicar}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">OtherRefNum</label>
+                                <label class="p-right">{{nsConsulta.otherRefNum}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Actions</label>
+                                <button class="btn btn-icon ghost-warning p-right" type="button" placement="bottom" arial-label="Edit"
+                                    ngbTooltip="Edit" [routerLink]="['/amcoderc_dev_Jaks/nsConsulta/edit/', nsConsulta.id]">
+                                    <i class="fi-rr-pencil"></i>
+                                </button>
+                                <button class="btn btn-icon ghost-danger p-right" type="button" (click)="delete(nsConsulta)" placement="bottom" aria-label="Remove"
+                                    ngbTooltip="Remove">
+                                    <i class="fi-rr-trash"></i>
+                                </button>
+                            </td>
+
+
+                        </tr>
+                    </ng-template>
+
+                    <!-- Empty table -->
+                    <ng-template pTemplate="emptymessage">
+                        <tr *ngIf="showLoading===false">
+                            <td colspan="27" class="text-center">
+                                No data found.
+                            </td>
+                        </tr>
+                        <tr *ngIf="showLoading===true">
+                            <td colspan="27" class="text-center">
+                                <span>&nbsp;</span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,498 @@
+<!-- Action Bar-->
+<div id="actionbar" class="action-bar show-action-bar m-2">
+    <div class="container-fluid d-flex align-items-center justify-content-between content-action-bar">
+        <!-- Title -->
+        <div class="d-flex align-items-center flex-wrap mr-1">
+            <div class="d-flex align-items-baseline flex-wrap mr-5">
+                <h5 class="my-1 mr-3">FacturaGlobal List</h5>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="d-flex align-items-center">
+            <button class="btn btn-icon ghost-warning mr-1" type="button" placement="bottom" ngbTooltip="Filter"
+                aria-label="Filter" (click)="openFilter(true)">
+                <i class="fi-rr-filter"></i>
+            </button>
+            <button class="btn btn-icon ghost-success mr-1" type="button" placement="bottom" ngbTooltip="Add"
+                aria-label="Add"  [routerLink]="['add']">
+                <i class="fi-rr-plus"></i>
+            </button>
+        </div>
+        <!-- Actions -->
+    </div>
+</div>
+<!-- Action Bar-->
+
+<!-- Option sidebar -->
+<p-sidebar [(visible)]="showFiller" [showCloseIcon]="false" position="right" styleClass="filter-sidebar">
+    <!-- Start >> Option sidebar -->
+    <nav>
+        <!-- Start >> Title -->
+        <div class="row pb-0 mr-0 ml-0">
+            <div class="col-12 filter-sidebar-title text-left">
+                <h5 class="mb-4 pt-4">Filters</h5>
+            </div>
+        </div>
+        <!-- End >> Title -->
+
+        <!-- Start >> Options content -->
+        <div class="p-4 text-left overflow-auto">
+            <form [formGroup]="frmFilter">
+
+
+                <div class="row pb-4">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="id">Id</label>
+                            <input type="text" class="form-control form-control-color" formControlName="id" aria-describedby="id">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="descripcion">Descripcion</label>
+                            <input type="text" class="form-control form-control-color" formControlName="descripcion" aria-describedby="descripcion">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="currency">Currency</label>
+                            <input type="text" class="form-control form-control-color" formControlName="currency" aria-describedby="currency">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="paymentConditions">PaymentConditions</label>
+                            <input type="text" class="form-control form-control-color" formControlName="paymentConditions" aria-describedby="paymentConditions">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="orderNumber">OrderNumber</label>
+                            <input type="text" class="form-control form-control-color" formControlName="orderNumber" aria-describedby="orderNumber">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="folio">Folio</label>
+                            <input type="text" class="form-control form-control-color" formControlName="folio" aria-describedby="folio">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="cfdiType">CfdiType</label>
+                            <input type="text" class="form-control form-control-color" formControlName="cfdiType" aria-describedby="cfdiType">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="paymentForm">PaymentForm</label>
+                            <input type="text" class="form-control form-control-color" formControlName="paymentForm" aria-describedby="paymentForm">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="paymentMethod">PaymentMethod</label>
+                            <input type="text" class="form-control form-control-color" formControlName="paymentMethod" aria-describedby="paymentMethod">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="receiver__Rfc">Receiver__Rfc</label>
+                            <input type="text" class="form-control form-control-color" formControlName="receiver__Rfc" aria-describedby="receiver__Rfc">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="receiver__Name">Receiver__Name</label>
+                            <input type="text" class="form-control form-control-color" formControlName="receiver__Name" aria-describedby="receiver__Name">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="receiver__CfdiUse">Receiver__CfdiUse</label>
+                            <input type="text" class="form-control form-control-color" formControlName="receiver__CfdiUse" aria-describedby="receiver__CfdiUse">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="expeditionPlaceSandbox">ExpeditionPlaceSandbox</label>
+                            <input type="text" class="form-control form-control-color" formControlName="expeditionPlaceSandbox" aria-describedby="expeditionPlaceSandbox">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="xmlInternalId">XmlInternalId</label>
+                            <input type="text" class="form-control form-control-color" formControlName="xmlInternalId" aria-describedby="xmlInternalId">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="pdfInternalId">PdfInternalId</label>
+                            <input type="text" class="form-control form-control-color" formControlName="pdfInternalId" aria-describedby="pdfInternalId">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="nombreArchivoSandbox">NombreArchivoSandbox</label>
+                            <input type="text" class="form-control form-control-color" formControlName="nombreArchivoSandbox" aria-describedby="nombreArchivoSandbox">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="nombreArchivo">NombreArchivo</label>
+                            <input type="text" class="form-control form-control-color" formControlName="nombreArchivo" aria-describedby="nombreArchivo">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6 col-sm-6 col-6 text-left">
+                        <button class="btn btn-block btn-default" (click)="resetForm()">
+                            Reset
+                        </button>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-6 text-right">
+                        <button class="btn btn-block btn-primary" (click)="searchList()">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Start >> Options content -->
+    </nav>
+    <!-- End >> Option sidebar -->
+</p-sidebar>
+
+<!-- Container -->
+<div class="m-sm-4 m-3">
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <div class="card">
+                <!-- Loader -->
+                <div class="loader-orion" *ngIf="showLoading===true">
+                    <div class="spinner-grow text-primary m-auto" role="status">
+                    </div>
+                </div>
+                <!-- FacturaGlobal Table -->
+                <p-table #dt class="table" [value]="facturaGlobals" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                    currentPageReportTemplate="{first} to {last} of {totalRecords}" sortMode="multiple"
+                    [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['id','descripcion','empresaId','periodoId','fechaInicio','fechaFin','completadaSandbox','completada','currency','expeditionPlace','paymentConditions','orderNumber','folio','cfdiType','paymentForm','paymentMethod','receiver__Rfc','receiver__Name','receiver__CfdiUse','cancelada','intento','usuarioCreacionId','expeditionPlaceSandbox','xmlInternalId','pdfInternalId','nombreArchivoSandbox','nombreArchivo','usuarioAprobadorId']"
+                    styleClass="p-datatable-responsive-demo">
+
+                    <!-- Title table -->
+                    <ng-template pTemplate="caption">
+                        <div class="row">
+                            <div class="col-lg-9 col-md-8 col-sm-6 col-12 d-flex align-items-center">
+                                <!-- Title -->
+                                <h5 class="m-3">Table FacturaGlobal</h5>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-center">
+                                <!-- Search -->
+                                <!-- <div class="d-flex align-items-center">
+                                  
+                                </div> -->
+                                <div class="input-group m-3">
+                                    <div class="input-icon input-icon-right">
+                                        <input pInputText type="text" class="form-control form-control-color"
+                                            (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                            placeholder="Search">
+                                        <span>
+                                            <i class="fi-rr-search text-muted"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </ng-template>
+
+                    <!-- Header table -->
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th class="th1" pSortableColumn="id">Id
+                                <p-sortIcon field="id"></p-sortIcon>
+                            </th>
+                            <th class="th2" pSortableColumn="descripcion">Descripcion
+                                <p-sortIcon field="descripcion"></p-sortIcon>
+                            </th>
+                            <th class="th3" pSortableColumn="empresaId">EmpresaId
+                                <p-sortIcon field="empresaId"></p-sortIcon>
+                            </th>
+                            <th class="th4" pSortableColumn="periodoId">PeriodoId
+                                <p-sortIcon field="periodoId"></p-sortIcon>
+                            </th>
+                            <th class="th5" pSortableColumn="fechaInicio">FechaInicio
+                                <p-sortIcon field="fechaInicio"></p-sortIcon>
+                            </th>
+                            <th class="th6" pSortableColumn="fechaFin">FechaFin
+                                <p-sortIcon field="fechaFin"></p-sortIcon>
+                            </th>
+                            <th class="th7" pSortableColumn="completadaSandbox">CompletadaSandbox
+                                <p-sortIcon field="completadaSandbox"></p-sortIcon>
+                            </th>
+                            <th class="th8" pSortableColumn="completada">Completada
+                                <p-sortIcon field="completada"></p-sortIcon>
+                            </th>
+                            <th class="th9" pSortableColumn="currency">Currency
+                                <p-sortIcon field="currency"></p-sortIcon>
+                            </th>
+                            <th class="th10" pSortableColumn="expeditionPlace">ExpeditionPlace
+                                <p-sortIcon field="expeditionPlace"></p-sortIcon>
+                            </th>
+                            <th class="th11" pSortableColumn="paymentConditions">PaymentConditions
+                                <p-sortIcon field="paymentConditions"></p-sortIcon>
+                            </th>
+                            <th class="th12" pSortableColumn="orderNumber">OrderNumber
+                                <p-sortIcon field="orderNumber"></p-sortIcon>
+                            </th>
+                            <th class="th13" pSortableColumn="folio">Folio
+                                <p-sortIcon field="folio"></p-sortIcon>
+                            </th>
+                            <th class="th14" pSortableColumn="cfdiType">CfdiType
+                                <p-sortIcon field="cfdiType"></p-sortIcon>
+                            </th>
+                            <th class="th15" pSortableColumn="paymentForm">PaymentForm
+                                <p-sortIcon field="paymentForm"></p-sortIcon>
+                            </th>
+                            <th class="th16" pSortableColumn="paymentMethod">PaymentMethod
+                                <p-sortIcon field="paymentMethod"></p-sortIcon>
+                            </th>
+                            <th class="th17" pSortableColumn="receiver__Rfc">Receiver__Rfc
+                                <p-sortIcon field="receiver__Rfc"></p-sortIcon>
+                            </th>
+                            <th class="th18" pSortableColumn="receiver__Name">Receiver__Name
+                                <p-sortIcon field="receiver__Name"></p-sortIcon>
+                            </th>
+                            <th class="th19" pSortableColumn="receiver__CfdiUse">Receiver__CfdiUse
+                                <p-sortIcon field="receiver__CfdiUse"></p-sortIcon>
+                            </th>
+                            <th class="th20" pSortableColumn="cancelada">Cancelada
+                                <p-sortIcon field="cancelada"></p-sortIcon>
+                            </th>
+                            <th class="th21" pSortableColumn="intento">Intento
+                                <p-sortIcon field="intento"></p-sortIcon>
+                            </th>
+                            <th class="th22" pSortableColumn="usuarioCreacionId">UsuarioCreacionId
+                                <p-sortIcon field="usuarioCreacionId"></p-sortIcon>
+                            </th>
+                            <th class="th23" pSortableColumn="expeditionPlaceSandbox">ExpeditionPlaceSandbox
+                                <p-sortIcon field="expeditionPlaceSandbox"></p-sortIcon>
+                            </th>
+                            <th class="th24" pSortableColumn="xmlInternalId">XmlInternalId
+                                <p-sortIcon field="xmlInternalId"></p-sortIcon>
+                            </th>
+                            <th class="th25" pSortableColumn="pdfInternalId">PdfInternalId
+                                <p-sortIcon field="pdfInternalId"></p-sortIcon>
+                            </th>
+                            <th class="th26" pSortableColumn="nombreArchivoSandbox">NombreArchivoSandbox
+                                <p-sortIcon field="nombreArchivoSandbox"></p-sortIcon>
+                            </th>
+                            <th class="th27" pSortableColumn="nombreArchivo">NombreArchivo
+                                <p-sortIcon field="nombreArchivo"></p-sortIcon>
+                            </th>
+                            <th class="th28" pSortableColumn="usuarioAprobadorId">UsuarioAprobadorId
+                                <p-sortIcon field="usuarioAprobadorId"></p-sortIcon>
+                            </th>
+                            <th class="th29">Actions</th>
+
+                        </tr>
+                    </ng-template>
+
+                    <!-- Body table -->
+                    <ng-template pTemplate="body" let-facturaGlobal>
+                        <tr>
+                            <td>
+                                <label class="p-column-title">Id</label>
+                                <label class="p-right">{{facturaGlobal.id}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Descripcion</label>
+                                <label class="p-right">{{facturaGlobal.descripcion}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">EmpresaId</label>
+                                <label class="p-right">{{facturaGlobal.empresaId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">PeriodoId</label>
+                                <label class="p-right">{{facturaGlobal.periodoId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">FechaInicio</label>
+                                <label class="p-right">{{facturaGlobal.fechaInicio | customDate}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">FechaFin</label>
+                                <label class="p-right">{{facturaGlobal.fechaFin | customDate}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">CompletadaSandbox</label>
+                                <label class="p-right">{{facturaGlobal.completadaSandbox}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Completada</label>
+                                <label class="p-right">{{facturaGlobal.completada}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Currency</label>
+                                <label class="p-right">{{facturaGlobal.currency}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">ExpeditionPlace</label>
+                                <label class="p-right">{{facturaGlobal.expeditionPlace}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">PaymentConditions</label>
+                                <label class="p-right">{{facturaGlobal.paymentConditions}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">OrderNumber</label>
+                                <label class="p-right">{{facturaGlobal.orderNumber}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Folio</label>
+                                <label class="p-right">{{facturaGlobal.folio}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">CfdiType</label>
+                                <label class="p-right">{{facturaGlobal.cfdiType}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">PaymentForm</label>
+                                <label class="p-right">{{facturaGlobal.paymentForm}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">PaymentMethod</label>
+                                <label class="p-right">{{facturaGlobal.paymentMethod}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Receiver__Rfc</label>
+                                <label class="p-right">{{facturaGlobal.receiver__Rfc}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Receiver__Name</label>
+                                <label class="p-right">{{facturaGlobal.receiver__Name}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Receiver__CfdiUse</label>
+                                <label class="p-right">{{facturaGlobal.receiver__CfdiUse}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Cancelada</label>
+                                <label class="p-right">{{facturaGlobal.cancelada}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Intento</label>
+                                <label class="p-right">{{facturaGlobal.intento}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">UsuarioCreacionId</label>
+                                <label class="p-right">{{facturaGlobal.usuarioCreacionId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">ExpeditionPlaceSandbox</label>
+                                <label class="p-right">{{facturaGlobal.expeditionPlaceSandbox}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">XmlInternalId</label>
+                                <label class="p-right">{{facturaGlobal.xmlInternalId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">PdfInternalId</label>
+                                <label class="p-right">{{facturaGlobal.pdfInternalId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">NombreArchivoSandbox</label>
+                                <label class="p-right">{{facturaGlobal.nombreArchivoSandbox}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">NombreArchivo</label>
+                                <label class="p-right">{{facturaGlobal.nombreArchivo}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">UsuarioAprobadorId</label>
+                                <label class="p-right">{{facturaGlobal.usuarioAprobadorId}}</label>
+                            </td>
+
+                            <td>
+                                <label class="p-column-title">Actions</label>
+                                <button class="btn btn-icon ghost-warning p-right" type="button" placement="bottom" arial-label="Edit"
+                                    ngbTooltip="Edit" [routerLink]="['/amcoderc_dev_Jaks/facturaGlobal/edit/', facturaGlobal.id]">
+                                    <i class="fi-rr-pencil"></i>
+                                </button>
+                                <button class="btn btn-icon ghost-danger p-right" type="button" (click)="delete(facturaGlobal)" placement="bottom" aria-label="Remove"
+                                    ngbTooltip="Remove">
+                                    <i class="fi-rr-trash"></i>
+                                </button>
+                            </td>
+
+
+                        </tr>
+                    </ng-template>
+
+                    <!-- Empty table -->
+                    <ng-template pTemplate="emptymessage">
+                        <tr *ngIf="showLoading===false">
+                            <td colspan="29" class="text-center">
+                                No data found.
+                            </td>
+                        </tr>
+                        <tr *ngIf="showLoading===true">
+                            <td colspan="29" class="text-center">
+                                <span>&nbsp;</span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>

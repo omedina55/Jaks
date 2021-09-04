@@ -1,0 +1,345 @@
+<!-- Action Bar-->
+<div id="actionbar" class="action-bar show-action-bar m-2">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+        <!-- Title -->
+        <div class="d-flex align-items-center flex-wrap mr-1">
+            <div class="d-flex align-items-baseline flex-wrap mr-5">
+                <h5 class="my-1 mr-3">NsConsulta Form</h5>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <!--<div class="d-flex align-items-center">
+            <span class="text-sm" for="description" *ngIf="editAction===true">Edit NsConsulta</span>
+            <span class="text-sm" for="description" *ngIf="editAction!==true">Create NsConsulta</span>
+        </div>-->
+    </div>
+</div>
+<!-- Container -->
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <!-- Listing -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 pb-2">
+                    <div class="card">
+                        <!-- Loader -->
+                        <div class="loader-orion" *ngIf="showLoading===true">
+                            <div class="spinner-grow text-primary m-auto" role="status">
+                            </div>
+                        </div>
+                        <div class="card-header align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="card-title m-1">NsConsulta</h5>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form [formGroup]="frmNsConsulta" (ngSubmit)="saveForm()">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="facturaGlobalId">FacturaGlobalId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="facturaGlobalId"
+                                                [ngClass]="{ 'is-invalid': validation && f.facturaGlobalId.errors }">
+                                            <div *ngIf="validation && f.facturaGlobalId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.facturaGlobalId.errors.required">FacturaGlobalId is required</div>
+                                                <div *ngIf="f.facturaGlobalId.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.facturaGlobalId.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.facturaGlobalId.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="tranDate">TranDate</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="tranDate">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="tranId">TranId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="tranId"
+                                                [ngClass]="{ 'is-invalid': validation && f.tranId.errors }">
+                                            <div *ngIf="validation && f.tranId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.tranId.errors.maxlength">Maximum field length is 50</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="entityId">EntityId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="entityId"
+                                                [ngClass]="{ 'is-invalid': validation && f.entityId.errors }">
+                                            <div *ngIf="validation && f.entityId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.entityId.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.entityId.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.entityId.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="cfdiTimbrada">CfdiTimbrada</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="cfdiTimbrada"
+                                                [ngClass]="{ 'is-invalid': validation && f.cfdiTimbrada.errors }">
+                                            <div *ngIf="validation && f.cfdiTimbrada.errors" class="invalid-feedback">
+                                                <div *ngIf="f.cfdiTimbrada.errors.maxlength">Maximum field length is 50</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="transactionType">TransactionType</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="transactionType"
+                                                [ngClass]="{ 'is-invalid': validation && f.transactionType.errors }">
+                                            <div *ngIf="validation && f.transactionType.errors" class="invalid-feedback">
+                                                <div *ngIf="f.transactionType.errors.maxlength">Maximum field length is 50</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="ticketCaja">TicketCaja</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="ticketCaja"
+                                                [ngClass]="{ 'is-invalid': validation && f.ticketCaja.errors }">
+                                            <div *ngIf="validation && f.ticketCaja.errors" class="invalid-feedback">
+                                                <div *ngIf="f.ticketCaja.errors.maxlength">Maximum field length is 50</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="relatedTranId">RelatedTranId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="relatedTranId"
+                                                [ngClass]="{ 'is-invalid': validation && f.relatedTranId.errors }">
+                                            <div *ngIf="validation && f.relatedTranId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.relatedTranId.errors.maxlength">Maximum field length is 50</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="name"
+                                                [ngClass]="{ 'is-invalid': validation && f.name.errors }">
+                                            <div *ngIf="validation && f.name.errors" class="invalid-feedback">
+                                                <div *ngIf="f.name.errors.maxlength">Maximum field length is 500</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="transactionId">TransactionId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="transactionId"
+                                                [ngClass]="{ 'is-invalid': validation && f.transactionId.errors }">
+                                            <div *ngIf="validation && f.transactionId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.transactionId.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.transactionId.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.transactionId.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="status">Status</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="status"
+                                                [ngClass]="{ 'is-invalid': validation && f.status.errors }">
+                                            <div *ngIf="validation && f.status.errors" class="invalid-feedback">
+                                                <div *ngIf="f.status.errors.maxlength">Maximum field length is 100</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="transactionOrder">TransactionOrder</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="transactionOrder"
+                                                [ngClass]="{ 'is-invalid': validation && f.transactionOrder.errors }">
+                                            <div *ngIf="validation && f.transactionOrder.errors" class="invalid-feedback">
+                                                <div *ngIf="f.transactionOrder.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.transactionOrder.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.transactionOrder.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="amountForeign">AmountForeign</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="amountForeign"
+                                                [ngClass]="{ 'is-invalid': validation && f.amountForeign.errors }">
+                                            <div *ngIf="validation && f.amountForeign.errors" class="invalid-feedback">
+                                                <div *ngIf="f.amountForeign.errors.pattern">Only numbers</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="subtotalFormato">SubtotalFormato</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="subtotalFormato"
+                                                [ngClass]="{ 'is-invalid': validation && f.subtotalFormato.errors }">
+                                            <div *ngIf="validation && f.subtotalFormato.errors" class="invalid-feedback">
+                                                <div *ngIf="f.subtotalFormato.errors.maxlength">Maximum field length is 200</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="accounId">AccounId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="accounId"
+                                                [ngClass]="{ 'is-invalid': validation && f.accounId.errors }">
+                                            <div *ngIf="validation && f.accounId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.accounId.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.accounId.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.accounId.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="accountNumber">AccountNumber</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="accountNumber"
+                                                [ngClass]="{ 'is-invalid': validation && f.accountNumber.errors }">
+                                            <div *ngIf="validation && f.accountNumber.errors" class="invalid-feedback">
+                                                <div *ngIf="f.accountNumber.errors.maxlength">Maximum field length is 50</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="typeName">TypeName</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="typeName"
+                                                [ngClass]="{ 'is-invalid': validation && f.typeName.errors }">
+                                            <div *ngIf="validation && f.typeName.errors" class="invalid-feedback">
+                                                <div *ngIf="f.typeName.errors.maxlength">Maximum field length is 500</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="amountTaxable">AmountTaxable</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="amountTaxable"
+                                                [ngClass]="{ 'is-invalid': validation && f.amountTaxable.errors }">
+                                            <div *ngIf="validation && f.amountTaxable.errors" class="invalid-feedback">
+                                                <div *ngIf="f.amountTaxable.errors.maxlength">Maximum field length is 500</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="taxItemId">TaxItemId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="taxItemId"
+                                                [ngClass]="{ 'is-invalid': validation && f.taxItemId.errors }">
+                                            <div *ngIf="validation && f.taxItemId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.taxItemId.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.taxItemId.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.taxItemId.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="itemTypeName">ItemTypeName</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="itemTypeName"
+                                                [ngClass]="{ 'is-invalid': validation && f.itemTypeName.errors }">
+                                            <div *ngIf="validation && f.itemTypeName.errors" class="invalid-feedback">
+                                                <div *ngIf="f.itemTypeName.errors.maxlength">Maximum field length is 500</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="rate">Rate</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="rate"
+                                                [ngClass]="{ 'is-invalid': validation && f.rate.errors }">
+                                            <div *ngIf="validation && f.rate.errors" class="invalid-feedback">
+                                                <div *ngIf="f.rate.errors.maxlength">Maximum field length is 50</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="entityName">EntityName</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="entityName"
+                                                [ngClass]="{ 'is-invalid': validation && f.entityName.errors }">
+                                            <div *ngIf="validation && f.entityName.errors" class="invalid-feedback">
+                                                <div *ngIf="f.entityName.errors.maxlength">Maximum field length is 500</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="entityFullName">EntityFullName</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="entityFullName"
+                                                [ngClass]="{ 'is-invalid': validation && f.entityFullName.errors }">
+                                            <div *ngIf="validation && f.entityFullName.errors" class="invalid-feedback">
+                                                <div *ngIf="f.entityFullName.errors.maxlength">Maximum field length is 500</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="descuentoPorAplicar">DescuentoPorAplicar</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="descuentoPorAplicar"
+                                                [ngClass]="{ 'is-invalid': validation && f.descuentoPorAplicar.errors }">
+                                            <div *ngIf="validation && f.descuentoPorAplicar.errors" class="invalid-feedback">
+                                                <div *ngIf="f.descuentoPorAplicar.errors.maxlength">Maximum field length is 500</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="otherRefNum">OtherRefNum</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="otherRefNum"
+                                                [ngClass]="{ 'is-invalid': validation && f.otherRefNum.errors }">
+                                            <div *ngIf="validation && f.otherRefNum.errors" class="invalid-feedback">
+                                                <div *ngIf="f.otherRefNum.errors.maxlength">Maximum field length is 50</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-end mt-3">
+                                        <button type="button" class="btn btn-default mr-3"
+                                            [routerLink]="['/amcoderc_dev_Jaks/nsConsulta']">Cancel</button>
+                                        <button type="button" class="btn btn-primary" type="submit"
+                                            >Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- <a href="javascript:void(0);" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

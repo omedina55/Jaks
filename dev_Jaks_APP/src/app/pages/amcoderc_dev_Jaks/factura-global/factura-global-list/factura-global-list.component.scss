@@ -1,0 +1,159 @@
+/* Responsive table */
+
+:host ::ng-deep {
+    .p-datatable-responsive-demo .p-datatable-tbody>tr>td .p-column-title {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 921px) {
+    :host ::ng-deep {
+        .p-datatable {
+            &.p-datatable-responsive-demo {
+
+                .p-datatable-thead>tr>th,
+                .p-datatable-tfoot>tr>td {
+                    display: none !important;
+                }
+
+                .p-datatable-tbody>tr>td {
+                    text-align: left;
+                    display: block;
+                    width: 100%;
+                    float: left;
+                    clear: left;
+                    border: 0 none;
+
+                    .p-column-title {
+                        padding: .4rem;
+                        min-width: 30%;
+                        display: inline-block;
+                        margin: -.4em 1em -.4em -.4rem;
+                        font-weight: bold;
+                    }
+                    .p-right{
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.th1 {
+    width: 3%;
+}
+
+.th2 {
+    width: 3%;
+}
+
+.th3 {
+    width: 3%;
+}
+
+.th4 {
+    width: 3%;
+}
+
+.th5 {
+    width: 3%;
+}
+
+.th6 {
+    width: 3%;
+}
+
+.th7 {
+    width: 3%;
+}
+
+.th8 {
+    width: 3%;
+}
+
+.th9 {
+    width: 3%;
+}
+
+.th10 {
+    width: 3%;
+}
+
+.th11 {
+    width: 3%;
+}
+
+.th12 {
+    width: 3%;
+}
+
+.th13 {
+    width: 3%;
+}
+
+.th14 {
+    width: 3%;
+}
+
+.th15 {
+    width: 3%;
+}
+
+.th16 {
+    width: 3%;
+}
+
+.th17 {
+    width: 3%;
+}
+
+.th18 {
+    width: 3%;
+}
+
+.th19 {
+    width: 3%;
+}
+
+.th20 {
+    width: 3%;
+}
+
+.th21 {
+    width: 3%;
+}
+
+.th22 {
+    width: 3%;
+}
+
+.th23 {
+    width: 3%;
+}
+
+.th24 {
+    width: 3%;
+}
+
+.th25 {
+    width: 3%;
+}
+
+.th26 {
+    width: 3%;
+}
+
+.th27 {
+    width: 3%;
+}
+
+.th28 {
+    width: 3%;
+}
+
+.th29 {
+    width: 16%;
+}
+
+

@@ -1,0 +1,167 @@
+<!-- Action Bar-->
+<div id="actionbar" class="action-bar show-action-bar m-2">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+        <!-- Title -->
+        <div class="d-flex align-items-center flex-wrap mr-1">
+            <div class="d-flex align-items-baseline flex-wrap mr-5">
+                <h5 class="my-1 mr-3">PeriodoEmpresa Form</h5>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <!--<div class="d-flex align-items-center">
+            <span class="text-sm" for="description" *ngIf="editAction===true">Edit PeriodoEmpresa</span>
+            <span class="text-sm" for="description" *ngIf="editAction!==true">Create PeriodoEmpresa</span>
+        </div>-->
+    </div>
+</div>
+<!-- Container -->
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <!-- Listing -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 pb-2">
+                    <div class="card">
+                        <!-- Loader -->
+                        <div class="loader-orion" *ngIf="showLoading===true">
+                            <div class="spinner-grow text-primary m-auto" role="status">
+                            </div>
+                        </div>
+                        <div class="card-header align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="card-title m-1">PeriodoEmpresa</h5>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form [formGroup]="frmPeriodoEmpresa" (ngSubmit)="saveForm()">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="descripcion">Descripcion</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="descripcion"
+                                                [ngClass]="{ 'is-invalid': validation && f.descripcion.errors }">
+                                            <div *ngIf="validation && f.descripcion.errors" class="invalid-feedback">
+                                                <div *ngIf="f.descripcion.errors.required">Descripcion is required</div>
+                                                <div *ngIf="f.descripcion.errors.maxlength">Maximum field length is 100</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="generada">Generada</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="generada"
+                                                [ngClass]="{ 'is-invalid': validation && f.generada.errors }">
+                                            <div *ngIf="validation && f.generada.errors" class="invalid-feedback">
+                                                <div *ngIf="f.generada.errors.required">Generada is required</div>
+                                                <div *ngIf="f.generada.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.generada.errors.min">Minimum value is -128</div>
+                                                <div *ngIf="f.generada.errors.max">Maximum value is 127</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="periodo">Periodo</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="periodo"
+                                                [ngClass]="{ 'is-invalid': validation && f.periodo.errors }">
+                                            <div *ngIf="validation && f.periodo.errors" class="invalid-feedback">
+                                                <div *ngIf="f.periodo.errors.required">Periodo is required</div>
+                                                <div *ngIf="f.periodo.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.periodo.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.periodo.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="mes">Mes</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="mes"
+                                                [ngClass]="{ 'is-invalid': validation && f.mes.errors }">
+                                            <div *ngIf="validation && f.mes.errors" class="invalid-feedback">
+                                                <div *ngIf="f.mes.errors.required">Mes is required</div>
+                                                <div *ngIf="f.mes.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.mes.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.mes.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="publishDate">FechaInicio</label>
+                                            <div class="input-group d-flex mb-4">
+                                                <input class="form-control form-control-color" placeholder="dd/mm/yyyy"
+                                                    ngbDatepicker #dpFechaInicio="ngbDatepicker" formControlName="fechaInicio"
+                                                    [ngClass]="{ 'is-invalid': validation && f.fechaInicio.errors }">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary icon-center calendar" (click)="dpFechaInicio.toggle()" type="button">
+                                                        <i class="fi-rr-calendar"></i>
+                                                    </button>
+                                                </div>
+                                                <div *ngIf="validation && f.fechaInicio.errors" class="invalid-feedback">
+                                                <div *ngIf="f.fechaInicio.errors.required">FechaInicio is required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="publishDate">FechaFin</label>
+                                            <div class="input-group d-flex mb-4">
+                                                <input class="form-control form-control-color" placeholder="dd/mm/yyyy"
+                                                    ngbDatepicker #dpFechaFin="ngbDatepicker" formControlName="fechaFin"
+                                                    [ngClass]="{ 'is-invalid': validation && f.fechaFin.errors }">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary icon-center calendar" (click)="dpFechaFin.toggle()" type="button">
+                                                        <i class="fi-rr-calendar"></i>
+                                                    </button>
+                                                </div>
+                                                <div *ngIf="validation && f.fechaFin.errors" class="invalid-feedback">
+                                                <div *ngIf="f.fechaFin.errors.required">FechaFin is required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-4 col-12">
+                                        <div class="form-group">
+                                            <label for="empresaId">EmpresaId</label>
+                                            <input type="text" class="form-control form-control-color" formControlName="empresaId"
+                                                [ngClass]="{ 'is-invalid': validation && f.empresaId.errors }">
+                                            <div *ngIf="validation && f.empresaId.errors" class="invalid-feedback">
+                                                <div *ngIf="f.empresaId.errors.required">EmpresaId is required</div>
+                                                <div *ngIf="f.empresaId.errors.pattern">Only integer numbers</div>
+                                                <div *ngIf="f.empresaId.errors.min">Minimum value is -2147483648</div>
+                                                <div *ngIf="f.empresaId.errors.max">Maximum value is 2147483647</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-end mt-3">
+                                        <button type="button" class="btn btn-default mr-3"
+                                            [routerLink]="['/amcoderc_dev_Jaks/periodoEmpresa']">Cancel</button>
+                                        <button type="button" class="btn btn-primary" type="submit"
+                                            >Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- <a href="javascript:void(0);" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
