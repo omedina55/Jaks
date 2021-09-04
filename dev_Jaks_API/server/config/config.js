@@ -19,9 +19,9 @@ process.env.SEED = process.env.SEED || 'CodeMono-Environment-Seed';  // Environm
 //=============================================
 // Database server settings MySQL
 //=============================================
-process.env.MYSQL_HOST = 'svrdev.amcoder.io';
+process.env.MYSQL_HOST = 'localhost';
 process.env.MYSQL_PORT = '3306';
-process.env.MYSQL_DATABASE = 'amcoderc_dev_Jaks';
+process.env.MYSQL_DATABASE = 'dev_Jaks';
 process.env.MYSQL_USER = 'omedina';
-process.env.MYSQL_PASSWORD = '0sc4rM3d1n4';
+process.env.MYSQL_PASSWORD = '12345';
 
